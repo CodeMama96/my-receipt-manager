@@ -5,22 +5,26 @@
         <link rel="stylesheet" type="text/css" href="style.css">
    </head>
    <body>
-        <h1>My Receipt Manager</h1>
-        <h2>Here are all Your Receipts Items:</h2>
+        <p>My<b>Receipt</b>Manager</p>
+        <p>All:</p>
        <ul id="receipt-list">
+
+        
        </ul>
 
-       <h3>Enter Your Transaction:</h3>
+       <b>Add Transaction:</b><br>
        <form id="receipt-form">
         <label for="item-name">Name:</label>
         <input type="text" name="name" id="item-name"><br><br>
-        <label for="item-description">Description:</label>
-        <input type="text" name="description" id="item-description"><br><br>
-        <label for="item-price">Price:</label>
-        <input type="number" name="price" id="item-price" min="0" step=".01"><br><br>
+        <label for="item-price">Amount:</label>
+        <input type="number" name="price" id="item-price"><br><br>
+        <label for="category">Choose Category:</label>
+        <input type="category" name= "category" id="category"><br><br>
         <input type="submit" value="Create">
 
            </form>
+        <script src="src/item.js" type="text/javascript"></script>
+        <script src="src/itemApi.js" type="text/javascript"></script>
         <script src="index.js" type="text/javascript"></script>
     </body>
 </html>

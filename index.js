@@ -1,48 +1,65 @@
 
 const list = document.getElementById("receipt-list")
+const priceInput = document.getElementById('item-price')
+const nameInput = document.getElementById('item-name')
+const categoryInput = document.getElementById("category")
+const form = document.getElementById('receipt-form')
+
+
 
 fetch('http://localhost:3000/items')
 
     .then(r => r.json())
     .then(renderItems)
 
+  
     function renderItems(arr){
         //debugger
         liElements = arr.map(function(item){
             let li = document.createElement('li')
-            li.innerText = `${item.name} - $${item.price}`
+            li.innerText = `${item.name}: $${item.price} - ${item.category.name}`
+           
             return li
         })  
-        //debugger
+        
         liElements.forEach(element =>{
             list.appendChild(element)
         })
-       
-
-        
-    //.map function without a hash name
-    //make sure to return
-//attribute with a serializer?
 
 
     }
+const createForm = document.querySelector("#receipt-form")
+    createForm.addEventListener('submit', handleSubmit)
 
-// function renderItem(item){
-//     li.dataset["id"] = item.id
-//     li.id = 'item=$item.id'
-//     li.innerHTML = `
-//         <div data-id="${item.id}">
-            
-//         </div>
-//     `
-//     li.addEventListener('click', handleLiClick)
+function handleSubmit(e){
+   e.preventDefault()
+
+   //make our params hash
+   const itemInfo = {
+        price:  priceInput.value,
+        name: nameInput.value,
+        category: categoryInput.value
+   }
+
+   const configObj = {
+       method: 'POST',
+       headers: {
+           "Content-Type": "application/json",
+           Accept: "application/json"
+       },
+       body: JSON.stringify(itemInfo)
+   }
+  
+   fetch("http://localhost:3000/items", configObj)
+    .then(r => r.json())
+    .then(json => renderItem(json.data))
+}
+
+function renderItem(){
+    fetch("http://localhost:3000/items")
+
     
-// }
 
-// function handleLiClick(e){
-//     if(e.target.innerText === "Edit"){
+}
 
-//     } else if (e.target.innerText === "Delete"){
-//         deleteItem(e)
-//     }
-// }
+//add item
