@@ -4,10 +4,12 @@ const priceInput = document.getElementById('item-price')
 const nameInput = document.getElementById('item-name')
 const categoryInput = document.getElementById("category")
 const form = document.getElementById('receipt-form')
+const viewCatBtn = document.querySelector("#find-by-category")
 
+//let can be reassigned
+const URL = 'http://localhost:3000/items'
 
-
-fetch('http://localhost:3000/items')
+fetch(URL)
 
     .then(r => r.json())
     .then(renderItems)
@@ -50,16 +52,19 @@ function handleSubmit(e){
        body: JSON.stringify(itemInfo)
    }
   
-   fetch("http://localhost:3000/items", configObj)
+   fetch(URL, configObj)
     .then(r => r.json())
     .then(json => renderItem(json.data))
 }
 
+//add item
+let viewCat = false;
+
 function renderItem(){
-    fetch("http://localhost:3000/items")
-
-    
-
+   
 }
 
-//add item
+viewCatBtn.addEventListener("click", ()=> {
+    return "hi"
+ 
+ })
