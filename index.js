@@ -63,7 +63,11 @@ function handleSubmit(e){
 
 function renderItem(item){
     //debugger
-   list.innerHTML += `<li>${item.name}: $${item.price} - ${item.category.name}</li>`       
+    if (!item.error){
+        list.innerHTML += `<li>${item.name}: $${item.price} - ${item.category.name}</li>`
+    } else {
+        console.log(item.error)
+    }
 }
 
 viewCatBtn.addEventListener("click", ()=> {
