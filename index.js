@@ -65,6 +65,10 @@ function renderItem(){
 }
 
 viewCatBtn.addEventListener("click", ()=> {
-    return "hi"
+    //when user *clicks* the Find By Category button
+    // I want it to hide the All list 
+    // show the different category names
+    //then the user can *click* each category name and view the transaction for that category
+
  
  })
