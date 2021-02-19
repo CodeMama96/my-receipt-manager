@@ -40,16 +40,15 @@
          <body>
 
         <h1>MyReceiptManager</h1>
-        <p><b>All:</b></p>
        <ul id="receipt-list">
-
+        <p><b>All:</b></p>
         
        </ul>
 
-       <p><b>By Category:</b></p>
+      
 
-       <ul id="category-list">
-
+       <ul id="category-list" style="display: none">
+        <p><b>By Category:</b></p>
 
        </ul>
 
@@ -61,11 +60,8 @@
         <input type="text" name="price" id="item-price" placeholder="How much?"><br><br>
         <label for="category">Choose Category:</label>
 
-       <select id="cat-list" name="cat-list">
+       <select id="cat-list" name="category">
             <option value="-">-</option>
-            <option value="coffee" name= "category" id="category">Coffee</option>
-            <option value="food" name= "category" id="category">Food</option>
-            <option value="utility" name= "category" id="category">Utility</option>
           </select>
 
           <p style="text-align:center">
@@ -80,6 +76,8 @@
 
         <script src="src/item.js" type="text/javascript"></script>
         <script src="src/itemApi.js" type="text/javascript"></script>
+        <script src="src/category.js" type="text/javascript"></script>
+        <script src="src/categoryApi.js" type="text/javascript"></script>
         <script src="index.js" type="text/javascript"></script>
     </body>
 </html>
