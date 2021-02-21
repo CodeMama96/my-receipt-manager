@@ -1,7 +1,6 @@
 
 const categoryURL = 'http://localhost:3000/categories'
 
-
 class Category {
     static all = []
     constructor({id, name}){
