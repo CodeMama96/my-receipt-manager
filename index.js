@@ -7,20 +7,20 @@ const form = document.getElementById('receipt-form')
 const viewCatBtn = document.querySelector("#find-by-category")
 const categoryList = document.querySelector('#category-list')
 
+
 //let can be reassigned
 const URL = 'http://localhost:3000/items'
 
 fetch(URL)
-
     .then(r => r.json())
     .then(renderItems)
-
   
     function renderItems(arr){
         //debugger
         liElements = arr.map(function(item){
             let li = document.createElement('li')
-            li.innerText = `${item.name}: $${item.price} - ${item.category.name}`
+            li.innerHTML = `${item.name}: $${item.price} - ${item.category.name} 
+            <td><a href="#" class="btn btn-red btn-sm delete">X</a></td>`
            
             return li
         })  
@@ -75,8 +75,10 @@ viewCatBtn.addEventListener("click", ()=> {
     // I want it to hide the All list 
     list.innerHTML = ""
     categoryList.style.display = ""
+    
     for (let category of Category.all){
-        categoryList.innerHTML += `<li>${category.name}</li>`
+        categoryList.innerHTML += `<p style="text-align:center">
+        <button class="catBtn">${category.name}</button><br></p>`
     }
 
     // show the different category names
