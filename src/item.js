@@ -40,7 +40,6 @@ class ItemInterface {
 
 // const form = document.getElementById('receipt-form')
 
-
 // //let can be reassigned
 // const URL = 'http://localhost:3000/items'
 
@@ -48,8 +47,7 @@ class ItemInterface {
 //     .then(r => r.json())
 //     .then(renderItems)
   
-//     function renderItems(arr){
-//         //debugger
+//     static renderItems(arr){
 //         liElements = arr.map(function(item){
 //             let li = document.createElement('li')
 //             li.innerText = `${item.name}: $${item.price} - ${item.category.name}`
@@ -66,10 +64,8 @@ class ItemInterface {
 // const createForm = document.querySelector("#receipt-form")
 //     createForm.addEventListener('submit', handleSubmit)
 
-// function handleSubmit(e){
+// static handleSubmit(e){
 //    e.preventDefault()
-
-//    //make our params hash
 //    const itemInfo = {
 //         price:  e.target.price.value,
 //         name: e.target.name.value,
@@ -91,10 +87,8 @@ class ItemInterface {
 //     e.target.reset()
 // }
 
-// //add item
 
-// function renderItem(item){
-//     //debugger
+// static renderItem(item){
 //     if (!item.error){
 //         list.innerHTML += `<li>${item.name}: $${item.price} - ${item.category.name}</li>`
 //     } else {

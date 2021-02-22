@@ -12,6 +12,9 @@ class Budget {
             //then each entry would take away from the wallet
 
             //update message saying "You have this $${wallet} in your wallet"
+
+            //reduce method?
+            
         //}
     }
 }

@@ -18,3 +18,5 @@ fetch(categoryURL)
     function renderCategories(){
 
     }
+
+    //find by category button needs to change to "All Transaction" Button
