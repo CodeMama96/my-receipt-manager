@@ -33,7 +33,6 @@ class Interface {
 
     static addEntry(expense){
         const expenseList = document.querySelector('#expense-list')
-
         const row = document.createElement('tr');
 
         row.innerHTML = `
@@ -52,17 +51,6 @@ class Interface {
 
     }
 
-    static totalBudget(){
-
-        //iterate through each amount in the array and total that amount
-        const totalTable = document.querySelector('#total')  
-        const row = document.createElement('tr');
-
-        row.innerHTML = `${this.amount.total}` //need total function to add up expenses/income
-        totalTable.appendChild(row);
-    }
-        
-
     static alrt(message, className){
         const div = document.createElement('div');
         div.className = `alert alert-${className}`;
@@ -80,6 +68,7 @@ class Interface {
 
 class StoreEntries{
     static getExpense(){
+        //this is getting the budget entries
         let expenses;
         if(localStorage.getItem('expenses') === null) {
             expenses = [];
@@ -104,6 +93,14 @@ class StoreEntries{
             }
         });
         localStorage.setItem('expenses', JSON.stringify(expenses)); //put in local storage
+    }
+
+    static totalExpense(amt){
+
+        //totaling the entries, both expenses and income items. 
+        const expenses = StoreEntries.getExpense();
+        const amount = 
+        amt.reduce((a, b) => a + b, 0)
     }
 }
 

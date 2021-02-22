@@ -28,8 +28,7 @@ class Item {
         let liElements = arr.map(function(item){
             new Item(item)
             let li = document.createElement('li')
-            li.innerHTML = `${item.name}: $${item.price} - ${item.category.name} 
-            <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>`
+            li.innerHTML = `${item.name}: $${item.price} - ${item.category.name} `
         
             return li
         })  
