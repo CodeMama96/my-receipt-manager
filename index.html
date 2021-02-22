@@ -32,7 +32,7 @@
           background-color: #45a049;
         }
 
-       input[type=viewCatBtn] {
+       .viewCatBtn {
           width: 100%;
           background-color: #4CAF50;
           color: white;
@@ -43,7 +43,7 @@
           cursor: pointer;
         }
         
-        input[type=viewCatBtn]:hover {
+       .viewCatBtn:hover {
           background-color: #45a049;
         }
 
@@ -75,9 +75,11 @@
         <ul id="receipt-list">
           <p><b>All:</b></p>
         </ul>
-        <p style="text-align:center" >
+        
+        <p style="text-align:center" id="hide_me">
           <button id="find-by-category">Find By Category</button>
         </p>
+      
       
        <ul id="category-list" style="display: none"></ul>
       </p>
@@ -93,10 +95,8 @@
             <select id="cat-list" name="category">
               <option disabled selected>-</option>
             </select>
+            <input type="submit" value="Create">
       </div>
-           
-       <input type="submit" value="Create">
-
            </form><br><br>
 
            <div class="expense-container mt-4">

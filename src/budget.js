@@ -1,10 +1,14 @@
 class Budget {
+    static all = []
     constructor(name, amount, date){
         this.name = name
         this.amount = amount
         this.date = date
-        this.wallet = 5000
+        //this.wallet = 5000
         
+
+        Budget.all.push(this)
+    
         //static displayWallet(){
             //
             //entry that allows user to set their wallet
@@ -49,10 +53,12 @@ class Interface {
     }
 
     static totalBudget(){
+
+        //iterate through each amount in the array and total that amount
         const totalTable = document.querySelector('#total')  
         const row = document.createElement('tr');
 
-        row.innerHTML = `${t.total}` //need total function to add up expenses/income
+        row.innerHTML = `${this.amount.total}` //need total function to add up expenses/income
         totalTable.appendChild(row);
     }
         
@@ -129,7 +135,7 @@ document.querySelector('#expense-form').addEventListener('submit', (e) => {
  
 });
 
-    //removes entry
+
 document.querySelector('#expense-list').addEventListener('click', (e) => {
     Interface.deleteExpense(e.target);
     StoreEntries.removeExpense
