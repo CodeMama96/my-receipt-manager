@@ -42,7 +42,13 @@ class Interface {
             <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
         `;
 
+        // const total = document.querySelector("#total")
+        // row.innerHTML = `
+        //     <td>${expense.name}</td>``
+
+
         expenseList.appendChild(row);
+
     }
     static deleteExpense(element){
         if(element.classList.contains('delete')){
@@ -95,14 +101,35 @@ class StoreEntries{
         localStorage.setItem('expenses', JSON.stringify(expenses)); //put in local storage
     }
 
-    static totalExpense(amt){
+   
 
         //totaling the entries, both expenses and income items. 
-        const expenses = StoreEntries.getExpense();
-        const amount = 
-        amt.reduce((a, b) => a + b, 0)
+        // const total = expenses.reduce((total, expense) => {
+        //     return (expense.amt === amt) ? total + expense[element_to_add] : total;
+        // }, 0)
+        static getTotalAmountForExpenses(expense) {
+            let totalPrice = 0;
+            
+            expense.forEach(function(item) {
+              totalPrice += item.amount;
+            });
+          
+            return totalPrice;
+          
+          
+
+        // need an update 
+        // const totalShow = document.querySelector('#total')
+        // const p = document.createElement('tr')
+        // const expenses = StoreEntries.getExpense();
+        // const total = expenses.reduce((total, expense)=>{
+        //     return (expense.amt === amt) ? total + expense[element_to_add] : total;
+        //     }, 0)
+        //     totalShow.appendChild(p)
+        };
+
+    
     }
-}
 
 
 document.addEventListener('DOMContentLoaded', Interface.displayBudget);
@@ -138,4 +165,9 @@ document.querySelector('#expense-list').addEventListener('click', (e) => {
     StoreEntries.removeExpense
     (e.target.parentElement.previousElementSibling.innerText);
     Interface.alrt('Expense Removed')
+    
 })
+
+
+StoreEntries.getTotalAmountForExpenses();
+        

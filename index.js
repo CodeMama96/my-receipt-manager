@@ -17,18 +17,24 @@ document.getElementById('hide_me').addEventListener('click', function () {
     this.style.display = 'none';
     tContainer.style.display = 'none';
     
+    
   });
 
 viewCatBtn.addEventListener("click", ()=> {
     list.innerHTML = ""
     categoryList.style.display = ""
+    //viewCatBtn.innerHTML = 'All'
 
 
-    for (let category of Category.all){
-        categoryList.innerHTML += `<p style="text-align:center">
-        <button class="catBtn">${category.name}</button><br></p>
-        `
+    for (let category of Category.all) { 
+        category.render()
+        categoryList.append(category.element)
+        category.addListener()
+       
+       //Item.renderItem()
     }
+
+    // based on category.name, show the items from that category.
 
 })
 

@@ -39,7 +39,7 @@ class Item {
 
     }
 
-
+//instance level method
     static handleSubmit(e){
         e.preventDefault()
         ItemApi.createItem(e)
