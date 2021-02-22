@@ -1,5 +1,4 @@
 
-const categoryURL = 'http://localhost:3000/categories'
 
 class Category {
     static all = []
@@ -11,12 +10,5 @@ class Category {
 
     }
 }
-fetch(categoryURL)
-    .then(r => r.json())
-    .then(renderCategories)
-
-    function renderCategories(){
-
-    }
 
     //find by category button needs to change to "All Transaction" Button

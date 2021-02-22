@@ -1,6 +1,4 @@
 
-
-
 class CategoryApi {
 
     static getCatgories () {
