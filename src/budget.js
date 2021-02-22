@@ -14,7 +14,7 @@ class Budget {
             //update message saying "You have this $${wallet} in your wallet"
 
             //reduce method?
-            
+
         //}
     }
 }
@@ -48,7 +48,15 @@ class Interface {
 
     }
 
-    //creating from scratch
+    static totalBudget(){
+        const totalTable = document.querySelector('#total')  
+        const row = document.createElement('tr');
+
+        row.innerHTML = `${t.total}` //need total function to add up expenses/income
+        totalTable.appendChild(row);
+    }
+        
+
     static alrt(message, className){
         const div = document.createElement('div');
         div.className = `alert alert-${className}`;
@@ -56,7 +64,6 @@ class Interface {
         const expenseContainer = document.querySelector('.expense-container')
         const form = document.querySelector('#expense-form');
         expenseContainer.insertBefore(div, form);
-        //make alert go away
         setTimeout(()=>document.querySelector('.alert').remove(), 3000);
     }
 
@@ -73,9 +80,8 @@ class StoreEntries{
         }else{
             expenses = JSON.parse(localStorage.getItem('expenses'));
         }
-            return expenses
+        return expenses
     }
-    
 
     static addExpense(expense) {
         const expenses = StoreEntries.getExpense();
@@ -85,16 +91,13 @@ class StoreEntries{
 
     static removeExpense(id) {
         //remove by id
-
         const expenses = StoreEntries.getExpense();
-
         expenses.forEach((expense, index)=>{
             if(expense.id === id){
                 expenses.splice(index, 1);
             }
         });
         localStorage.setItem('expenses', JSON.stringify(expenses)); //put in local storage
-
     }
 }
 
@@ -115,28 +118,20 @@ document.querySelector('#expense-form').addEventListener('submit', (e) => {
     if(name === '' || amount === '' || date === ''){
       Interface.alrt('Please fill in missing fields.');
     } else {
-
-    //Instantiate expense
       const expense = new Budget(name, amount, date);
 
     //add book to user interface
       Interface.addEntry(expense);
-
       StoreEntries.addExpense(expense)
-
-      //message
-      Interface.alrt('Expense Added') //success?
-
-    //clear entries
+      Interface.alrt('Expense Added')
       Interface.clearEntries();
     }
  
 });
 
-//Event: remove an entry
+    //removes entry
 document.querySelector('#expense-list').addEventListener('click', (e) => {
     Interface.deleteExpense(e.target);
-
     StoreEntries.removeExpense
     (e.target.parentElement.previousElementSibling.innerText);
     Interface.alrt('Expense Removed')
