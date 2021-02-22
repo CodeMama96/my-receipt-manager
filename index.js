@@ -4,7 +4,7 @@ const priceInput = document.getElementById('item-price')
 const nameInput = document.getElementById('item-name')
 const categoryInput = document.getElementById("category")
 const form = document.getElementById('receipt-form')
-const viewCatBtn = document.querySelector("#find-by-category")
+const viewCatBtn = document.getElementById("find-by-category")
 const categoryList = document.querySelector('#category-list')
 
 
@@ -17,10 +17,12 @@ Item.receiptForm.addEventListener('submit', Item.handleSubmit);
 
 viewCatBtn.addEventListener("click", ()=> {
     list.innerHTML = ""
-    categoryList.style.display = ""
+    viewCatBtn.style.visibility = ""
+
     for (let category of Category.all){
         categoryList.innerHTML += `<p style="text-align:center">
-        <button class="catBtn">${category.name}</button><br></p>`
+        <button class="catBtn">${category.name}</button><br></p>
+        `
     }
 })
 

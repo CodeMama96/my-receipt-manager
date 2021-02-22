@@ -71,30 +71,29 @@
          <body>
 
       <h1>MyReceiptManager</h1>
+     
         <ul id="receipt-list">
           <p><b>All:</b></p>
-        
         </ul>
-
-       <ul id="category-list" style="display: none"></ul>
-        <p style="text-align:center"><b>By Category:</b></p>
-        
-        <p style="text-align:center">
+        <p style="text-align:center" >
           <button id="find-by-category">Find By Category</button>
-          </p>
+        </p>
+      
+       <ul id="category-list" style="display: none"></ul>
+      </p>
       <br><br>
-
-       <b>Add Transaction:</b><br>
-       <form id="receipt-form">
-        <label for="item-name">Name:</label>
-        <input type="text" name="name" id="item-name" placeholder="Name of Transaction.."><br><br>
-        <label for="item-price">Amount:</label>
-        <input type="text" name="price" id="item-price" placeholder="How much?"><br><br>
-        <label for="category">Choose Category:</label>
-
-          <select id="cat-list" name="category">
-            <option disabled selected>-</option>
-          </select>
+      <div class="transaction-container mt-4">
+        <b>Add Transaction:</b><br>
+          <form id="receipt-form">
+          <label for="item-name">Name:</label>
+          <input type="text" name="name" id="item-name" placeholder="Name of Transaction.."><br><br>
+          <label for="item-price">Amount:</label>
+          <input type="text" name="price" id="item-price" placeholder="How much?"><br><br>
+          <label for="category">Choose Category:</label>
+            <select id="cat-list" name="category">
+              <option disabled selected>-</option>
+            </select>
+      </div>
            
        <input type="submit" value="Create">
 
