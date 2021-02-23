@@ -45,7 +45,7 @@ class Item {
         ItemApi.createItem(e)
     }
 
-    static renderItem(item){
+    renderItem(item){
         if (!item.error){
             new Item(item)
             list.innerHTML += `<li>${item.name}: $${item.price} - ${item.category.name}</li>`

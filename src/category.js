@@ -22,14 +22,19 @@ class Category {
     }
 
     handleSubmit = (e) => {
+    
         list.style.display = '';
   
         for (let item of Item.all){
-            if (item.includes(this.category)){
-            item.renderItems()
+            
+            if (item.category){
+             this.Item.renderItem(item)
+             ///onsole.log(item.category)
         } else {
             console.log(this.name)
         }
+
+        //Item.sort(category.name)?
     }
         //This.renderItem()
        //console.log(this.name)
