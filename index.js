@@ -39,6 +39,28 @@ viewCatBtn.addEventListener("click", ()=> {
 
 })
 
+
+const sortBtn = document.querySelector("#sort-by-price");
+
+sortBtn.addEventListener('click', sortPrice);
+
+function sortPrice (){
+    debugger
+    //if we use this, then we need an arrow function, sets value the moment the function is executed
+    //.sort by price
+
+    let sort =  Item.all.sort((itemA, itemB) => itemA.price - itemB.price); //swap for other order
+    list.innerHTML = ""
+    for (const item of sort){
+        let li = document.createElement('li')
+            li.innerHTML = `${item.name}: $${item.price} - ${item.category.name} `
+        list.append(li);
+    }
+    //this is for a class
+
+    //debugger
+}
+
 CategoryApi.getCatgories()
 
 

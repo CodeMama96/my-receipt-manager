@@ -26,7 +26,9 @@ class Item {
     static handleData(arr){
 
         let liElements = arr.map(function(item){
-            new Item(item)
+           
+            let itemObj =  new Item(item)
+            // itemObj.render()
             let li = document.createElement('li')
             li.innerHTML = `${item.name}: $${item.price} - ${item.category.name} `
         
