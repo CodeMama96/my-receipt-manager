@@ -4,7 +4,7 @@ class ItemApi{
 
     static URL = 'http://localhost:3000/items'
 
-    static createItem(e){
+    createItem(e){
         //ItemApi.itemIfo
 
         const itemInfo = {

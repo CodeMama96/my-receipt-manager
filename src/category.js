@@ -6,6 +6,7 @@ class Category {
         this.id = id
         this.name = name
         this.element = document.createElement('p')
+        //this.category_id = category_id
         Category.all.push(this) 
         this.element.classList.add('center')
 
@@ -24,20 +25,13 @@ class Category {
     handleSubmit = (f) => {
     
         if(f){
-            for (let item of Item.all){
-                   // debugger
-                if (item.category){
-                   debugger
-                    
-                   // Item.all.filter
-                ///onsole.log(item.category)
-                //item.style.display = '';
-                } else {
-                item.style.display = "none";
-                //console.log(this.name)
-                }
-            }
+          
+            let filterItem = Item.all.filter(catItem=> catItem.category.name === f.target.innerText)
 
+            list.innerHTML = ""
+            for (let item of filterItem){
+                Item.renderItem(item)
+            }
         
         }
         // for (let item of Item.all){
