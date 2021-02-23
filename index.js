@@ -30,6 +30,7 @@ viewCatBtn.addEventListener("click", ()=> {
         category.render()
         categoryList.append(category.element)
         category.addListener()
+        category.handleSubmit()
        
        //Item.renderItem()
     }

@@ -21,32 +21,60 @@ class Category {
         this.element.addEventListener('click', this.handleSubmit)
     }
 
-    handleSubmit = (e) => {
+    handleSubmit = (f) => {
     
-        list.style.display = '';
-  
-        for (let item of Item.all){
-            
-            if (item.category){
-             this.Item.renderItem(item)
-             ///onsole.log(item.category)
-        } else {
-            console.log(this.name)
+        if(f){
+            for (let item of Item.all){
+                   // debugger
+                if (item.category){
+                   debugger
+                    
+                   // Item.all.filter
+                ///onsole.log(item.category)
+                //item.style.display = '';
+                } else {
+                item.style.display = "none";
+                //console.log(this.name)
+                }
+            }
+
+        
         }
+        // for (let item of Item.all){
+            
+        //     if (item.category){
+        //         Item.all.filter
+        //      this.Item.renderItem(item)
+        //      ///onsole.log(item.category)
+        //      item.style.display = '';
+        // } else {
+        //     item.element.style.display = "none";
+        //     //console.log(this.name)
+        // }
 
         //Item.sort(category.name)?
     }
-        //This.renderItem()
-       //console.log(this.name)
-    
-        //unhide recipe-list
-        //iterate through the list and .filter by this.name
-        
-    }
 
-    // showCategories(){
-    //    this.renderItem()
+    // filterCategory(f){
+    //     if(f){
+    //         for (let item of Item.all){
+    //                 debugger
+    //             if (item.category){
+    //                 Item.all.filter
+    //             ///onsole.log(item.category)
+    //             item.style.display = '';
+    //             } else {
+    //             item.style.display = "none";
+    //             //console.log(this.name)
+    //             }
+    //         }
+
+        
+    //     }
     // }
+
+
+   
 
 
 }

@@ -1,8 +1,8 @@
 class Item {
 
-    static URL = 'http://localhost:3000/items'
+    URL = 'http://localhost:3000/items'
     static receiptForm = document.querySelector("#receipt-form");
-
+    //calls on class itself.
     static all = []
 
     constructor({name, date, price, description, category}){
@@ -16,14 +16,14 @@ class Item {
         //initalize, set properties of each item
     }
 
-    static fetchItems(){
+    fetchItems(){
         fetch(this.URL)
             .then(r => r.json())
             .then(this.handleData)  
     }
 
 
-    static handleData(arr){
+    handleData(arr){
 
         let liElements = arr.map(function(item){
             new Item(item)
@@ -39,8 +39,8 @@ class Item {
 
     }
 
-//instance level method
-    static handleSubmit(e){
+
+    handleSubmit(e){
         e.preventDefault()
         ItemApi.createItem(e)
     }
@@ -53,6 +53,8 @@ class Item {
             console.log(item.error)
         }
     }
+
+
 
 }
 
