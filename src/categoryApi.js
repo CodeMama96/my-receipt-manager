@@ -2,7 +2,7 @@
 class CategoryApi {
 
     static getCatgories () {
-        fetch("http://localhost:3000/categories")
+        fetch('http://localhost:3000/categories')
         .then(r => r.json())
         .then(data => {
             for(let category of data){

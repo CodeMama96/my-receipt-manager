@@ -22,7 +22,11 @@ class Category {
     }
 
     handleSubmit = (e) => {
-        list.style.display = ''
+        ///list.style.display = '';
+
+        for (let item of Item.all){
+            item.renderItems()
+        }
         //This.renderItem()
        //console.log(this.name)
     
