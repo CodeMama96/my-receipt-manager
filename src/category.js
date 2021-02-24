@@ -30,7 +30,7 @@ class Category {
 
             list.innerHTML = ""
             for (let item of filterItem){
-                Item.renderItem(item)
+                item.renderItem(item)
             }
         
         }

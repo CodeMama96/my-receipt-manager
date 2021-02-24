@@ -45,7 +45,6 @@ const sortBtn = document.querySelector("#sort-by-price");
 sortBtn.addEventListener('click', sortPrice);
 
 function sortPrice (){
-    debugger
     //if we use this, then we need an arrow function, sets value the moment the function is executed
     //.sort by price
 

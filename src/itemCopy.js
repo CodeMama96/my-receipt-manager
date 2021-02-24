@@ -47,13 +47,17 @@ class Item {
         ItemApi.createItem(e)
     }
 
-    static renderItem(item){
-        if (!item.error){
-            new Item(item)
-            list.innerHTML += `<li>${item.name}: $${item.price} - ${item.category.name}</li>`
+renderItem(){ //1.static 
+    console.log(this)
+        if (!this.error){
+           
+            list.innerHTML += `<li>${this.name}: $${this.price} - ${this.category.name}</li>`
         } else {
-            console.log(item.error)
-        }
+            console.log(this.error)
+        } 
+        
+        //Item.all.forEach(this =>
+        //create non static function here
     }
 
 
