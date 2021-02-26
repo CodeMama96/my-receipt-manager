@@ -43,7 +43,8 @@ viewCatBtn.addEventListener("click", ()=> {
 const sortBtn = document.querySelector("#sort-by-price");
 
 sortBtn.addEventListener('click', sortPrice);
-
+//<button id="sort-by-price">Sort By Price</button>
+          
 function sortPrice (){
     //if we use this, then we need an arrow function, sets value the moment the function is executed
     //.sort by price

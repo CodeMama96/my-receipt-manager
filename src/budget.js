@@ -1,25 +1,13 @@
 class Budget {
+    static URL = 'http://localhost:3000/budgets'
     static all = []
     constructor(name, amount, date){
         this.name = name
         this.amount = amount
         this.date = date
-        //this.wallet = 5000
-        
 
         Budget.all.push(this)
-    
-        //static displayWallet(){
-            //
-            //entry that allows user to set their wallet
-            //add money to wallet and 
-            //then each entry would take away from the wallet
 
-            //update message saying "You have this $${wallet} in your wallet"
-
-            //reduce method?
-
-        //}
     }
 }
 
@@ -41,12 +29,6 @@ class Interface {
             <td>${expense.date}</td>
             <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
         `;
-
-        // const total = document.querySelector("#total")
-        // row.innerHTML = `
-        //     <td>${expense.name}</td>``
-
-
         expenseList.appendChild(row);
 
     }
@@ -78,6 +60,7 @@ class StoreEntries{
         let expenses;
         if(localStorage.getItem('expenses') === null) {
             expenses = [];
+            //foreach and .map works for an array
         }else{
             expenses = JSON.parse(localStorage.getItem('expenses'));
         }
@@ -107,16 +90,19 @@ class StoreEntries{
         // const total = expenses.reduce((total, expense) => {
         //     return (expense.amt === amt) ? total + expense[element_to_add] : total;
         // }, 0)
-        static getTotalAmountForExpenses(expense) {
+        static getTotalAmountForExpenses() {
+            const expenses = StoreEntries.getExpense();
+
             let totalPrice = 0;
             
-            expense.forEach(function(item) {
+            expenses.forEach(function(item) {
               totalPrice += item.amount;
             });
-          
+            const totalShow = document.querySelector('#total')
+            totalShow.innerText = totalPrice
+            
             return totalPrice;
-          
-          
+//cacll function everytime someone adds a new expense
 
         // need an update 
         // const totalShow = document.querySelector('#total')

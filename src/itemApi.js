@@ -4,7 +4,7 @@ class ItemApi{
 
     static URL = 'http://localhost:3000/items'
 
-    createItem(e){
+    static createItem(e){
         //ItemApi.itemIfo
 
         const itemInfo = {
@@ -24,7 +24,10 @@ class ItemApi{
 
         fetch(this.URL, configObj)
             .then(r => r.json())
-            .then(Item.renderItem)
+            .then(json => {
+                let item = new Item(json) //creates item object
+                item.renderItem()
+            })
             e.target.reset()
     }
 }

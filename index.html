@@ -71,8 +71,8 @@
          <body>
 
       <h1>MyReceiptManager</h1>
-        <button id="sort-by-price">Sort By Price</button>
-          <ul id="receipt-list">
+      
+        <ul id="receipt-list">
             <p><b>All:</b></p>
           </ul>
         
@@ -80,7 +80,7 @@
           <button id="find-by-category">Find By Category</button>
         </p>
       
-      
+       <button id="sort-by-price">Sort By Price</button>
        <ul id="category-list" style="display: none"></ul>
       </p>
       <br><br>
@@ -130,7 +130,9 @@
               <th></th>
             </tr>
             <tbody id="expense-list"></tbody>
-            <tr><th class="total">Total:</th></tr>
+            <tr><th class="total">Total:</th>
+            <td id="total"></td>
+            </tr>
           </thead>
         </table>
         </div><br><br>

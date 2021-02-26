@@ -5,11 +5,11 @@ class Item {
     //calls on class itself.
     static all = []
 
-    constructor({name, date, price, description, category}){
+    constructor({name, price, category}){
         this.name = name
-        this.date = date
+        //this.date = date
         this.price = price
-        this.description = description
+        //this.description = description
         this.category = category
 
         Item.all.push(this)

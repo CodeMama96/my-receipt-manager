@@ -30,46 +30,12 @@ class Category {
 
             list.innerHTML = ""
             for (let item of filterItem){
-                item.renderItem(item)
+                item.renderItem()
             }
         
         }
-        // for (let item of Item.all){
-            
-        //     if (item.category){
-        //         Item.all.filter
-        //      this.Item.renderItem(item)
-        //      ///onsole.log(item.category)
-        //      item.style.display = '';
-        // } else {
-        //     item.element.style.display = "none";
-        //     //console.log(this.name)
-        // }
-
-        //Item.sort(category.name)?
+         
     }
-
-    // filterCategory(f){
-    //     if(f){
-    //         for (let item of Item.all){
-    //                 debugger
-    //             if (item.category){
-    //                 Item.all.filter
-    //             ///onsole.log(item.category)
-    //             item.style.display = '';
-    //             } else {
-    //             item.style.display = "none";
-    //             //console.log(this.name)
-    //             }
-    //         }
-
-        
-    //     }
-    // }
-
-
-   
-
 
 }
     //need an eventlistener for each category item and when that button is clicked,
