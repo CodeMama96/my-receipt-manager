@@ -91,29 +91,29 @@ class StoreEntries{
         //     return (expense.amt === amt) ? total + expense[element_to_add] : total;
         // }, 0)
         static getTotalAmountForExpenses() {
+            
             const expenses = StoreEntries.getExpense();
 
-            let totalPrice = 0;
+            let totalPrice = 0
             
             expenses.forEach(function(item) {
               totalPrice += item.amount;
             });
             const totalShow = document.querySelector('#total')
             totalShow.innerText = totalPrice
-            
+          debugger
+        
             return totalPrice;
-//cacll function everytime someone adds a new expense
 
-        // need an update 
-        // const totalShow = document.querySelector('#total')
-        // const p = document.createElement('tr')
-        // const expenses = StoreEntries.getExpense();
-        // const total = expenses.reduce((total, expense)=>{
-        //     return (expense.amt === amt) ? total + expense[element_to_add] : total;
-        //     }, 0)
-        //     totalShow.appendChild(p)
         };
 
+        static updateTotal(e){
+            e.preventDefault() //automatically refreshes page
+            //update total price
+
+
+
+        }
     
     }
 
