@@ -10,9 +10,11 @@ class Category {
         Category.all.push(this) 
         this.element.classList.add('center')
 
+
     }
 
     render(){
+       
     this.element.innerHTML = `<button class="catBtn">${this.name}</button><br>`
     //this representing an individual category
     }
@@ -20,19 +22,18 @@ class Category {
     addListener(){
         //represents the element on the DOM
         this.element.addEventListener('click', this.handleSubmit)
+    
     }
 
     handleSubmit = (f) => {
     
         if(f){
-          
             let filterItem = Item.all.filter(catItem=> catItem.category.name === f.target.innerText)
 
             list.innerHTML = ""
             for (let item of filterItem){
                 item.renderItem()
             }
-        
         }
          
     }

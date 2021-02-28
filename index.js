@@ -8,15 +8,18 @@ const viewCatBtn = document.getElementById("find-by-category")
 const categoryList = document.querySelector('#category-list')
 const tContainer = document.querySelector("body > div.transaction-container.mt-4")
 
+const budgetForm = document.querySelector('budget-form')
+const budgetList = document.querySelector('#budget-list')
+
 //let can be reassigned
 
 Item.fetchItems()
-Interface.displayBudget()
+
+//Interface.displayBudget()
 Item.receiptForm.addEventListener('submit', Item.handleSubmit);
 document.getElementById('hide_me').addEventListener('click', function () {
     this.style.display = 'none';
     tContainer.style.display = 'none';
-    
     
   });
 
@@ -25,19 +28,17 @@ viewCatBtn.addEventListener("click", ()=> {
     categoryList.style.display = ""
     //viewCatBtn.innerHTML = 'All'
 
-
     for (let category of Category.all) { 
         category.render()
         categoryList.append(category.element)
         category.addListener()
         category.handleSubmit()
-       
-       //Item.renderItem()
+    
     }
-
-    // based on category.name, show the items from that category.
-
 })
+
+Budget.fetchBudget()
+//Budget.budgetForm.addEventListener('submit', Budget.handleBudgetSubmit);
 
 
 const sortBtn = document.querySelector("#sort-by-price");
@@ -46,8 +47,6 @@ sortBtn.addEventListener('click', sortPrice);
 //<button id="sort-by-price">Sort By Price</button>
           
 function sortPrice (){
-    //if we use this, then we need an arrow function, sets value the moment the function is executed
-    //.sort by price
 
     let sort =  Item.all.sort((itemA, itemB) => itemA.price - itemB.price); //swap for other order
     list.innerHTML = ""
@@ -56,9 +55,6 @@ function sortPrice (){
             li.innerHTML = `${item.name}: $${item.price} - ${item.category.name} `
         list.append(li);
     }
-    //this is for a class
-
-    //debugger
 }
 
 CategoryApi.getCatgories()

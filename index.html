@@ -32,8 +32,8 @@
           background-color: #45a049;
         }
 
-       .viewCatBtn {
-          width: 100%;
+       #find-by-category {
+          width: 50%;
           background-color: #4CAF50;
           color: white;
           padding: 14px 20px;
@@ -43,7 +43,7 @@
           cursor: pointer;
         }
         
-       .viewCatBtn:hover {
+       #find-by-category:hover {
           background-color: #45a049;
         }
 
@@ -100,9 +100,9 @@
       </div>
            </form><br><br>
 
-           <div class="expense-container mt-4">
+           <div class="budget-container mt-4">
             <h1>MyBudget</h1>
-              <form id="expense-form">
+              <form id="budget-form">
                 <div class="form-group">
                   <label for="name">Name</label>
                   <input type="text" id="name"
@@ -130,9 +130,9 @@
               <th>Date</th>
               <th></th>
             </tr>
-            <tbody id="expense-list"></tbody>
-            <tr><th class="total">Total:</th>
-            <td id="total"></td>
+            <tbody id="budget-list"></tbody>
+            <tr><th hidden class="total">Total:</th>
+            <td hidden id="total"></td>
             </tr>
           </thead>
         </table>
@@ -142,7 +142,7 @@
         <script src="src/itemApi.js" type="text/javascript"></script>
         <script src="src/category.js" type="text/javascript"></script>
         <script src="src/categoryApi.js" type="text/javascript"></script>
-        <script src="src/budget.js" type="text/javascript"></script>
+        <script src="src/budgetCopy.js" type="text/javascript"></script>
         
         <script src="index.js" type="text/javascript"></script>
     </body>

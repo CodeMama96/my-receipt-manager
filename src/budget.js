@@ -20,7 +20,7 @@ class Interface {
     }
 
     static addEntry(expense){
-        const expenseList = document.querySelector('#expense-list')
+        const budgetList = document.querySelector('#budget-list')
         const row = document.createElement('tr');
 
         row.innerHTML = `
@@ -29,7 +29,7 @@ class Interface {
             <td>${expense.date}</td>
             <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
         `;
-        expenseList.appendChild(row);
+        budgetList.appendChild(row);
 
     }
     static deleteExpense(element){
@@ -80,16 +80,12 @@ class StoreEntries{
             if(expense.id === id){
                 expenses.splice(index, 1);
             }
+           
         });
         localStorage.setItem('expenses', JSON.stringify(expenses)); //put in local storage
     }
 
-   
 
-        //totaling the entries, both expenses and income items. 
-        // const total = expenses.reduce((total, expense) => {
-        //     return (expense.amt === amt) ? total + expense[element_to_add] : total;
-        // }, 0)
         static getTotalAmountForExpenses() {
             
             const expenses = StoreEntries.getExpense();
@@ -97,23 +93,20 @@ class StoreEntries{
             let totalPrice = 0
             
             expenses.forEach(function(item) {
-              totalPrice += item.amount;
+             
+              totalPrice += item.amount
+              
             });
             const totalShow = document.querySelector('#total')
             totalShow.innerText = totalPrice
-          debugger
+        
         
             return totalPrice;
 
         };
 
-        static updateTotal(e){
-            e.preventDefault() //automatically refreshes page
-            //update total price
+       
 
-
-
-        }
     
     }
 

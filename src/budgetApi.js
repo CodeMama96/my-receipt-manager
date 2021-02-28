@@ -1,16 +1,33 @@
 class BudgetApi {
 
-    static getBudgets () {
-        fetch('http://localhost:3000/budgets')
+    static budgetUrl = 'http://localhost:3000/budgets'
+
+    static createBudgetItem () {
+      
+
+        const budgetInfo ={
+            name: e.target.name.value,
+            amount: e.target.amount.value,
+            date: e.target.date.value
+        }
+
+        const confidObj = {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: JSON.stringify(budgetInfo)
+        }
+
+        fetch(this.budgetUrl, confidObj)
         .then(r => r.json())
-        .then(data => {
-            for(let budget of data){
-                new Budget(budget) //ctegory represents each id name hashes
-                //new budget object based on id and name
-            }
-            for(let budget of Budget.all){
-                document.getElementById("budget-list").innerHTML += `<option value="${budget.name}">${budget.name}</option>`
-               }
+        .then(json => {
+            let item = new Budget(json) //creates item object
+            item.renderBudget()
         })
+        e.target.reset()
     }
+
+
 }
