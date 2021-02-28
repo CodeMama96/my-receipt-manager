@@ -8,7 +8,7 @@ const viewCatBtn = document.getElementById("find-by-category")
 const categoryList = document.querySelector('#category-list')
 const tContainer = document.querySelector("body > div.transaction-container.mt-4")
 
-const budgetForm = document.querySelector('budget-form')
+const budgetForm = document.querySelector('#budget-form')
 const budgetList = document.querySelector('#budget-list')
 
 //let can be reassigned
@@ -38,7 +38,7 @@ viewCatBtn.addEventListener("click", ()=> {
 })
 
 Budget.fetchBudget()
-//Budget.budgetForm.addEventListener('submit', Budget.handleBudgetSubmit);
+budgetForm.addEventListener('submit', Budget.handleBudgetSubmit);
 
 
 const sortBtn = document.querySelector("#sort-by-price");

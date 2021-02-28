@@ -2,10 +2,11 @@ class Budget {
     static URL = 'http://localhost:3000/budgets'
     static all = []
 
-    constructor(name, amount, date){
+    constructor({name, amount, date, id}){
         this.name = name
         this.amount = amount
         this.date = date
+        this.id = id
 
         Budget.all.push(this)
 
@@ -21,16 +22,19 @@ class Budget {
 
 
     static handleBudgetData(arr){
-        let tr = document.createElement('tr');
+      
         let trElements = arr.map(function(item){
+         
+            new Budget(item)
             let tr = document.createElement('tr');
             tr.innerHTML = `
             <td>${item.name}</td>
             <td>$${item.amount}</td>
             <td>${item.date}</td>
-            <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
+            <td><button id='${item.id}' class="btn btn-danger btn-sm delete">X</button></td>
+        
         `;
-
+        tr.querySelector('button').addEventListener('click', Budget.handleDelete)
         return tr
         })
 
@@ -38,15 +42,19 @@ class Budget {
             budgetList.appendChild(element)
         })
 
-        tr.addEventListener('click', Budget.handleDelete)
+        
 
 
         
     }
 
     static handleDelete(element){
-        if(element.classList.contains('delete')){
-            element.parentElement.parentElement.remove();
+      
+        if(element.target.classList.contains('delete')){
+            element.target.parentElement.parentElement.remove();
+            let budget = Budget.all.find(b => b.id == element.target.id)
+           
+            BudgetApi.deleteBudgetItem(budget)
         }
 
     }
@@ -58,13 +66,14 @@ class Budget {
 
     renderBudgetItem(){
         console.log(this)
+       // debugger
         if (!this.error){
            
             budgetList.innerHTML += 
             `<td>${this.name}</td>
             <td>$${this.amount}</td>
             <td>${this.date}</td>
-            <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
+            <td><button class="btn btn-danger btn-sm delete">X</button></td>
         `;
         } else {
             console.log(this.error)
@@ -72,12 +81,7 @@ class Budget {
         
     }
 
-   handleDelete(element){
-        if(element.classList.contains('delete')){
-            element.parentElement.parentElement.remove();
-        }
-
-    }
+  
 
     static alrt(message, className){
         const div = document.createElement('div');

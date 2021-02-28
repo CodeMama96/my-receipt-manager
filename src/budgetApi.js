@@ -2,7 +2,7 @@ class BudgetApi {
 
     static budgetUrl = 'http://localhost:3000/budgets'
 
-    static createBudgetItem () {
+    static createBudgetItem(e) {
       
 
         const budgetInfo ={
@@ -23,10 +23,29 @@ class BudgetApi {
         fetch(this.budgetUrl, confidObj)
         .then(r => r.json())
         .then(json => {
-            let item = new Budget(json) //creates item object
-            item.renderBudget()
+            //debugger
+            let budget= new Budget(json)
+            budget.renderBudgetItem()
         })
         e.target.reset()
+    }
+
+    static deleteBudgetItem(budget){
+       
+        const confidObj = {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: JSON.stringify(budget)
+        }
+
+        fetch(this.budgetUrl+`/${budget.id}`, confidObj)
+        .then(r => r.json())
+        
+        .then(data => console.log(data))
+        
     }
 
 
