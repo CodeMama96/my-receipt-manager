@@ -15,7 +15,7 @@ const budgetList = document.querySelector('#budget-list')
 
 Item.fetchItems()
 
-//Interface.displayBudget()
+
 Item.receiptForm.addEventListener('submit', Item.handleSubmit);
 document.getElementById('hide_me').addEventListener('click', function () {
     this.style.display = 'none';
@@ -44,7 +44,7 @@ budgetForm.addEventListener('submit', Budget.handleBudgetSubmit);
 const sortBtn = document.querySelector("#sort-by-price");
 
 sortBtn.addEventListener('click', sortPrice);
-//<button id="sort-by-price">Sort By Price</button>
+
           
 function sortPrice (){
 

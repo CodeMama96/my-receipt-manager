@@ -3,7 +3,6 @@ class BudgetApi {
     static budgetUrl = 'http://localhost:3000/budgets'
 
     static createBudgetItem(e) {
-      
 
         const budgetInfo ={
             name: e.target.name.value,
