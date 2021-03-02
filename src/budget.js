@@ -1,152 +1,91 @@
 class Budget {
     static URL = 'http://localhost:3000/budgets'
     static all = []
-    constructor(name, amount, date){
+
+    constructor({name, amount, date, id}){
         this.name = name
         this.amount = amount
         this.date = date
+        this.id = id
 
         Budget.all.push(this)
 
     }
-}
 
-class Interface {
-    static displayBudget(){
-        const expenses = StoreEntries.getExpense();
-    
-        expenses.forEach((expense) => Interface.addEntry(expense));
-
+    static fetchBudget(){
+        fetch(this.URL)
+        .then(r => r.json())
+        .then(this.handleBudgetData)
     }
 
-    static addEntry(expense){
-        const budgetList = document.querySelector('#budget-list')
-        const row = document.createElement('tr');
-
-        row.innerHTML = `
-            <td>${expense.name}</td>
-            <td>$${expense.amount}</td>
-            <td>${expense.date}</td>
-            <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
+    static handleBudgetData(arr){
+      
+        let trElements = arr.map(function(item){
+         
+            new Budget(item)
+            let tr = document.createElement('tr');
+            tr.innerHTML = `
+            <td>${item.name}</td>
+            <td>$${item.amount}</td>
+            <td>${item.date}</td>
+            <td><button id='${item.id}' class="btn btn-danger btn-sm delete">X</button></td>
+        
         `;
-        budgetList.appendChild(row);
+        tr.querySelector('button').addEventListener('click', Budget.handleDelete)
+        return tr
+        })
+
+        trElements.forEach(element =>{
+            budgetList.appendChild(element)
+        })
 
     }
-    static deleteExpense(element){
-        if(element.classList.contains('delete')){
-            element.parentElement.parentElement.remove();
+
+    static handleDelete(element){
+      
+        if(element.target.classList.contains('delete')){
+            element.target.parentElement.parentElement.remove();
+            let budget = Budget.all.find(b => b.id == element.target.id)
+           
+            BudgetApi.deleteBudgetItem(budget)
         }
 
+    }
+
+    static handleBudgetSubmit(e){
+        e.preventDefault()
+        BudgetApi.createBudgetItem(e)
+    }
+
+    renderBudgetItem(){
+        console.log(this)
+       // debugger
+        if (!this.error){
+           
+            budgetList.innerHTML += 
+            `<td>${this.name}</td>
+            <td>$${this.amount}</td>
+            <td>${this.date}</td>
+            <td><button class="btn btn-danger btn-sm delete">X</button></td>
+        `;
+        } else {
+            console.log(this.error)
+        } 
+        
     }
 
     static alrt(message, className){
         const div = document.createElement('div');
         div.className = `alert alert-${className}`;
         div.appendChild(document.createTextNode(message));
-        const expenseContainer = document.querySelector('.expense-container')
-        const form = document.querySelector('#expense-form');
-        expenseContainer.insertBefore(div, form);
+        const budgetContainer = document.querySelector('.budget-container')
+        const form = document.querySelector('#budget-form');
+        budgetContainer.insertBefore(div, form);
         setTimeout(()=>document.querySelector('.alert').remove(), 3000);
     }
 
     static clearEntries(){
-        document.getElementById('expense-form').reset()
+        document.getElementById('budget-form').reset()
     }
+
 }
-
-class StoreEntries{
-    static getExpense(){
-        //this is getting the budget entries
-        let expenses;
-        if(localStorage.getItem('expenses') === null) {
-            expenses = [];
-            //foreach and .map works for an array
-        }else{
-            expenses = JSON.parse(localStorage.getItem('expenses'));
-        }
-        return expenses
-    }
-
-    static addExpense(expense) {
-        const expenses = StoreEntries.getExpense();
-        expenses.push(expense);
-        localStorage.setItem('expenses', JSON.stringify(expenses));
-    }
-
-    static removeExpense(id) {
-        //remove by id
-        const expenses = StoreEntries.getExpense();
-        expenses.forEach((expense, index)=>{
-            if(expense.id === id){
-                expenses.splice(index, 1);
-            }
-           
-        });
-        localStorage.setItem('expenses', JSON.stringify(expenses)); //put in local storage
-    }
-
-
-        static getTotalAmountForExpenses() {
-            
-            const expenses = StoreEntries.getExpense();
-
-            let totalPrice = 0
-            
-            expenses.forEach(function(item) {
-             
-              totalPrice += item.amount
-              
-            });
-            const totalShow = document.querySelector('#total')
-            totalShow.innerText = totalPrice
-        
-        
-            return totalPrice;
-
-        };
-
-       
-
-    
-    }
-
-
-document.addEventListener('DOMContentLoaded', Interface.displayBudget);
-
-//add an expense
-
-document.querySelector('#expense-form').addEventListener('submit', (e) => {
-    //prevent actual submit
-    e.preventDefault();
-    const name = document.querySelector('#name').value;
-    const amount = document.querySelector('#amount').value;
-    const date = document.querySelector('#date').value;
-
-    //validate
-
-    if(name === '' || amount === '' || date === ''){
-      Interface.alrt('Please fill in missing fields.');
-    } else {
-      const expense = new Budget(name, amount, date);
-
-    //add book to user interface
-      Interface.addEntry(expense);
-      StoreEntries.addExpense(expense)
-      Interface.alrt('Expense Added')
-      Interface.clearEntries();
-    }
- 
-});
-
-
-document.querySelector('#expense-list').addEventListener('click', (e) => {
-    Interface.deleteExpense(e.target);
-    StoreEntries.removeExpense
-    (e.target.parentElement.previousElementSibling.innerText);
-    Interface.alrt('Expense Removed')
-    
-})
-
-
-StoreEntries.getTotalAmountForExpenses();
-        
