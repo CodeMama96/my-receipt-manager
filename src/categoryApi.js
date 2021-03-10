@@ -2,7 +2,7 @@
 class CategoryApi {
 
     static getCatgories () {
-        fetch('http://localhost:3000/categories')
+        fetch('https://cryptic-cove-15090.herokuapp.com/')
         .then(r => r.json())
         .then(data => {
             for(let category of data){

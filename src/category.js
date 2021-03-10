@@ -28,7 +28,7 @@ class Category {
     handleSubmit = (f) => {
   
         if(f){
-            debugger
+           // debugger
             let filterItem = Item.all.filter(catItem=> catItem.category.name === f.target.innerText)
 
             list.innerHTML = ""

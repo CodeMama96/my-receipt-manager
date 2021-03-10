@@ -1,6 +1,6 @@
 class Item {
 
-    static URL = 'http://localhost:3000/items'
+    static URL = 'https://cryptic-cove-15090.herokuapp.com/'
     static receiptForm = document.querySelector("#receipt-form");
 
     static all = []
@@ -41,21 +41,18 @@ class Item {
     static handleSubmit(e){
         e.preventDefault()
         ItemApi.createItem(e)
-        debugger
+        
     }
 
     renderItem(){ //1.static 
-        debugger
         console.log(this)
         if (!this.error){
         
             list.innerHTML += `<li>${this.name}: $${this.price} - ${this.category.name}</li>`
         } else {
             console.log(this.error)
-            debugger
         } 
     }
-
 }
 
 

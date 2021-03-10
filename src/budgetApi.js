@@ -1,8 +1,9 @@
 class BudgetApi {
 
-    static budgetUrl = 'http://localhost:3000/budgets'
+    static budgetUrl = 'https://cryptic-cove-15090.herokuapp.com/'
 
     static createBudgetItem(e) {
+      
 
         const budgetInfo ={
             name: e.target.name.value,
@@ -22,10 +23,11 @@ class BudgetApi {
         fetch(this.budgetUrl, confidObj)
         .then(r => r.json())
         .then(json => {
-            //debugger
+            
             let budget= new Budget(json)
             budget.renderBudgetItem()
         })
+        console.log("hello")
         e.target.reset()
     }
 

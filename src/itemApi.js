@@ -2,7 +2,7 @@
 
 class ItemApi{
 
-    static URL = 'http://localhost:3000/items'
+    static URL = 'https://cryptic-cove-15090.herokuapp.com/'
 
     static createItem(e){
         //ItemApi.itemIfo

@@ -13,6 +13,7 @@ const budgetList = document.querySelector('#budget-list')
 
 //let can be reassigned
 
+
 Item.fetchItems()
 
 
@@ -20,8 +21,21 @@ Item.receiptForm.addEventListener('submit', Item.handleSubmit);
 document.getElementById('hide_me').addEventListener('click', function () {
     this.style.display = 'none';
     tContainer.style.display = 'none';
-    
+
   });
+
+  const searchVar = document.querySelector(".search");
+  searchVar.addEventListener('submit', search);
+
+function search (){
+    let filterBySearch =  Item.all.filter(
+        //array of items filtered by search
+    ); //swap for other order
+    list.innerHTML = ""
+    //new LI .forEach 
+
+    //append to the DOM
+}
 
 viewCatBtn.addEventListener("click", ()=> {
     list.innerHTML = ""
