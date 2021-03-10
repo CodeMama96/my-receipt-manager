@@ -1,6 +1,6 @@
 class BudgetApi {
 
-    static budgetUrl = 'https://cryptic-cove-15090.herokuapp.com/'
+    static budgetUrl = 'https://cryptic-cove-15090.herokuapp.com/budgets'
 
     static createBudgetItem(e) {
       
