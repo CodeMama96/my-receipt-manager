@@ -1,8 +1,13 @@
 
 class CategoryApi {
 
+    static herokuURL = 'http://cryptic-cove-15090.herokuapp.com/categories'
+    static URL = 'http://localhost:3000/categories'
+
+    
+
     static getCatgories () {
-        fetch('https://cryptic-cove-15090.herokuapp.com/categories')
+        fetch(this.URL)
         .then(r => r.json())
         .then(data => {
             for(let category of data){

@@ -1,5 +1,6 @@
 class Budget {
-    static URL = 'https://cryptic-cove-15090.herokuapp.com/budgets'
+    static herokuURL = 'http://cryptic-cove-15090.herokuapp.com/budgets'
+    static URL = 'http://localhost:3000/budgets'
     static all = []
 
     constructor({name, amount, date, id}){

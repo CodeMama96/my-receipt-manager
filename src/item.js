@@ -1,6 +1,7 @@
 class Item {
 
-    static URL = 'https://cryptic-cove-15090.herokuapp.com/items'
+    static herokuURL = 'http://cryptic-cove-15090.herokuapp.com/items'
+    static URL = 'http://localhost:3000/items'
     static receiptForm = document.querySelector("#receipt-form");
 
     static all = []

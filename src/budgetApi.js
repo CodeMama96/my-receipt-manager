@@ -1,7 +1,8 @@
 class BudgetApi {
 
-    static budgetUrl = 'https://cryptic-cove-15090.herokuapp.com/budgets'
-
+    static budgetHerokuUrl = 'http://cryptic-cove-15090.herokuapp.com/budgets'
+    static URL ='http://localhost:3000/budgets'
+    
     static createBudgetItem(e) {
       
 
@@ -20,7 +21,7 @@ class BudgetApi {
             body: JSON.stringify(budgetInfo)
         }
 
-        fetch(this.budgetUrl, confidObj)
+        fetch(this.URL, confidObj)
         .then(r => r.json())
         .then(json => {
             
@@ -42,7 +43,7 @@ class BudgetApi {
             body: JSON.stringify(budget)
         }
 
-        fetch(this.budgetUrl+`/${budget.id}`, confidObj)
+        fetch(this.URL+`/${budget.id}`, confidObj)
         .then(r => r.json())
         
         .then(data => console.log(data))
